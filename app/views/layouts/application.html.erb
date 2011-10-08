@@ -5,7 +5,7 @@
     <title><%= @app_name %></title>
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application" %>
-    <%= javascript_include_tag params[:controller] %>
+    <%= javascript_include_tag params[:controller] unless params[:controller].to_s.include?("devise") %>
     <%= csrf_meta_tags %>
     <style type="text/css">
       body {
@@ -47,10 +47,12 @@
             </p>
           <% else %>
             <%= form_for( :user, :url => session_path(:user), :html => {:class => "pull-right"} ) do |f| %>
+              <div>
               <%= f.email_field :email, class: "input-small", placeholder: "Email" %>
               <%= f.password_field :password, class: "input-small", placeholder: "Password" %>
               <button class="btn" type="submit">Sign in</button>
               <button class="btn" type="button" onclick="go_sign_up();">Sign up</button>
+            </div>
             <% end %>
           <% end %>
         </div>

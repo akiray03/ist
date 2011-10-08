@@ -1,17 +1,37 @@
-<h2>Sign in</h2>
+<div class="row">
+  <div class="span7">
+    <h2>Sign in</h2>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-stacked'}) do |f| %>
+      <%= devise_error_messages! %>
+      <% className = 'span6 xlarge' %>
+      <fieldset>
+        <div class="clearfix">
+          <%= f.label :email %>
+          <div class="input">
+            <%= f.email_field :email, :class => className %>
+          </div>
+        </div><!-- /clearfix -->
+        <div class="clearfix">
+          <%= f.label :password %>
+          <div class="input">
+            <%= f.password_field :password, :class => className %>
+          </div>
+        </div><!-- /clearfix -->
+        <div class="clearfix">
+          <div class="input">
+            <ul class="inputs-list">
+              <li><label for="user_remember_me"><%= f.check_box :remember_me %> <span>Remember me</span></label></li>
+            </ul>
+          </div>
+        </div><!-- /clearfix -->
+    </fieldset>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+      <div class="actions">
+        <%= f.submit "Sign in", :class => "btn large primary" %>
+      </div>
+    <% end %>
 
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
-
-  <div><%= f.submit "Sign in" %></div>
-<% end %>
-
-<%= render :partial => "devise/shared/links" %>
+    <%= render :partial => "devise/shared/links" %>
+  </div>
+</div>

@@ -1,7 +1,13 @@
 <div class="<%= defined?(className) ? className : 'span6' %>">
   <h2>Tweet</h2>
-  <%= form_for(:tweet, :url => :tweet_post, :html => {:id => 'tweet_post_form'}) do |f| %>
-    <div><%= f.text_area :message, :style => "width:100%;height:60px;" %></div>
+  <%= form_for(:tweet, :url => :tweet_post, :html => {:id => 'tweet_post_form', :class => 'form-stacked'}) do |f| %>
+    <fieldset>
+      <div class="clearfix">
+        <div class="input">
+          <%= f.text_area :message, :style => "width:100%;height:60px;" %>
+        </div>
+      </div><!-- /clearfix -->
+    </fieldset>
     <div style="margin-top:10px;text-align:right;">
       <%= f.submit "tweet", :class => 'btn large primary' %>
     </div>
