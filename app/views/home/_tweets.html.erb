@@ -1,0 +1,4 @@
+<div class="<%= defined?(className) ? className : 'span6' %>">
+  <h2><%= defined?(title) ? title : 'Tweets List' %></h2>
+  <%= render :partial => 'tweet', :collection => tweets %>
+</div>

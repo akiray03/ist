@@ -21,7 +21,7 @@ group :assets do
   gem 'uglifier'
 end
 
-
+gem "rails-footnotes", :groups => [:development]
 
 # Use unicorn as the web server
 # gem 'unicorn'

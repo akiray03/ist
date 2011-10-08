@@ -10,4 +10,8 @@ class User < ActiveRecord::Base
 
   # relation
   has_many :tweets
+
+  def nickname
+    self[:nickname] ? self[:nickname] : self[:email].split('@').first
+  end
 end

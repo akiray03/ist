@@ -1,5 +1,6 @@
 Ist::Application.routes.draw do
   get "home/index"
+  post "home/post", :as => :tweet_post
 
   devise_for :users
 

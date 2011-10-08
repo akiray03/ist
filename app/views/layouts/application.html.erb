@@ -1,16 +1,92 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Ist</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <meta charset="utf-8">
+    <title><%= @app_name %></title>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+      }
+      .topbar h3 a, .topbar .brand {
+        padding: 0px;
+      }
+    </style>
+    <script type="text/javascript">
+      function go_sign_up() {
+        location.href = '<%= new_registration_path(:user) %>';
+      }
+    </script>
+  </head>
+  <body>
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <%= yield %>
+    <div class="topbar">
+      <div class="fill">
+        <div class="container">
+          <%= link_to image_tag('ist.png', :alt => @app_name), root_path, :class => 'brand' %>
+          <ul class="nav">
+            <li class="active"><%= link_to 'Home', root_path %></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+          <% if user_signed_in? %>
+            <p class="pull-right">
+            Logged in as <a href="#"><%= current_user.nickname %></a> &nbsp;
+            <%= link_to " Sign out", destroy_user_session_path, :method => :delete %>
+            </p>
+          <% else %>
+            <%= form_for( :user, :url => session_path(:user), :html => {:class => "pull-right"} ) do |f| %>
+              <%= f.email_field :email, class: "input-small", placeholder: "Email" %>
+              <%= f.password_field :password, class: "input-small", placeholder: "Password" %>
+              <button class="btn" type="submit">Sign in</button>
+              <button class="btn" type="button" onclick="go_sign_up();">Sign up</button>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container-fluid">
+      <div class="sidebar">
+        <div class="well">
+          <h5>Sidebar</h5>
+          <ul>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+          </ul>
+          <h5>Sidebar</h5>
+          <ul>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="content">
+        <% if notice %>
+          <div class="alert-message notice fade in" data-alert="alert">
+            <a class="close" href="#">&cross;</a>
+            <p><%= notice %></p>
+          </div>
+        <% end %>
+        <% if alert %>
+          <div class="alert-message warning fade in" data-alert="alert">
+            <a class="close" href="#">&cross;</a>
+            <p><%= alert %></p>
+          </div>
+        <% end %>
+        <%= yield %>
+      </div>
+
+      <footer>
+      <p>&copy; 2011 akiray03</p>
+      </footer>
+    </div>
+  </div>
 
 </body>
 </html>

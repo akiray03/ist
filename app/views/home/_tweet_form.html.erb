@@ -1,0 +1,7 @@
+<div class="<%= defined?(className) ? className : 'span6' %>">
+  <h2>Tweet</h2>
+  <%= form_for(:tweet, :url => :tweet_post) do |f| %>
+    <%= f.text_field :message %>
+    <%= f.submit "tweet" %>
+  <% end %>
+</div>
