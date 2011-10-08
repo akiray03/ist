@@ -1,6 +1,8 @@
 class HomeController < ApplicationController
   def index
-    @tweets = Tweet.find(:all, :order => "created_at desc")
+    @tweets = Tweet.paginate(:page => params[:page],
+                             :per_page => (params[:per_page] ? params[:per_page] : 10),
+                             :order => "created_at desc")
   end
 
   def post

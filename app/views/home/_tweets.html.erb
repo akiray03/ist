@@ -1,4 +1,7 @@
 <div class="<%= defined?(className) ? className : 'span6' %>">
   <h2><%= defined?(title) ? title : 'Tweets List' %></h2>
   <%= render :partial => 'tweet', :collection => tweets %>
+  <div>
+    <%= will_paginate @tweets, :previous_label=>'前へ', :next_label=>'次へ' %>
+  </div>
 </div>

@@ -1,1 +1,8 @@
-<p><%= tweet.message %> (<%= tweet.created_at %>)</p>
+<div class="well">
+  <div class="left"><%= image_tag 'avatar.png', :alt => 'avatar' %></div>
+  <div class="right">
+    <p class="tweet-username"><%= tweet.user.nickname %></p>
+    <p><%= tweet.message %></p>
+    <p class="tweet-footer"><%= tweet.created_at %></p>
+  </div>
+</div>

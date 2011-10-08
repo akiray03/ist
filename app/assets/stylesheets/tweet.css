@@ -1,0 +1,17 @@
+div.well div.left {
+	float: left;
+}
+
+div.well div.right {
+	margin-left: 75px;
+}
+
+div.well .tweet-username {
+	font-weight: bold;
+}
+
+div.well .tweet-footer {
+	font-size: small;
+	color: gray;
+}
+

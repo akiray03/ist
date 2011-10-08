@@ -5,6 +5,7 @@
     <title><%= @app_name %></title>
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag params[:controller] %>
     <%= csrf_meta_tags %>
     <style type="text/css">
       body {
@@ -18,6 +19,14 @@
       function go_sign_up() {
         location.href = '<%= new_registration_path(:user) %>';
       }
+      function entertag(evt){
+        evt=(evt)?evt:event;
+        charCode=(evt.which)?evt.which:evt.keyCode;
+        if(charCode==13 || charCode==10) $('#tweet_post_form').submit();
+      }
+      $(document).ready(function(){
+        $('#tweet_post_form').keydown(entertag);
+      });
     </script>
   </head>
   <body>

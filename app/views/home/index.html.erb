@@ -1,5 +1,5 @@
 <div class="row">
-  <%= render :partial => 'tweets', :locals => {:tweets => @tweets, :className => 'span6', :title => 'Tweets'} %>
+  <%= render :partial => 'tweets', :locals => {:tweets => @tweets, :className => 'span8', :title => 'Tweets'} %>
   <% if signed_in? %>
     <%= render :partial => 'tweet_form', :locals => {:className => 'span6'} %>
   <% end %>

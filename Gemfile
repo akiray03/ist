@@ -21,6 +21,8 @@ group :assets do
   gem 'uglifier'
 end
 
+gem 'will_paginate'
+
 gem "rails-footnotes", :groups => [:development]
 
 # Use unicorn as the web server
